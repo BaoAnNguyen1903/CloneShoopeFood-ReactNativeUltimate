@@ -1,15 +1,14 @@
 import { Link } from "expo-router";
 import { Text, View } from "react-native";
 
-const AppRoot = () => {
+const HomePage = () => {
   return (
     <View>
-      <Text style={{ color: "red" }}>Hello World with bao an</Text>
-      <Link style={{ color: "red" }} href={"/home"}>
-        Go to home
-      </Link>
+      <Text>Home PAge</Text>
+      <Link href={"/product"}>Go to product</Link>
+      <Link href={"/login"}>Go to login</Link>
     </View>
   );
 };
 
-export default AppRoot;
+export default HomePage;
