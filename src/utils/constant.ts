@@ -1,3 +1,3 @@
 export const APP_COLOR = {
-  ORANGE: "#redred"
+  ORANGE: "#f4511e"
 };
