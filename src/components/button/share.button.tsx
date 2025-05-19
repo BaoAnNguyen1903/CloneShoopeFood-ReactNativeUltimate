@@ -1,4 +1,4 @@
-import { APP_COLOR } from "@/src/utils/constant";
+import { APP_COLOR } from "@/utils/constant";
 import { ReactNode } from "react";
 import {
   Pressable,
@@ -11,20 +11,14 @@ import {
 
 const styles = StyleSheet.create({
   btnContainer: {
-    borderWidth: 1,
-    borderColor: "green",
     borderRadius: 10,
     paddingHorizontal: 15,
     paddingVertical: 10,
     flexDirection: "row",
     gap: 10,
     alignItems: "center",
-    // alignSelf: "flex-start",
     backgroundColor: APP_COLOR.ORANGE
   },
-  text: {
-    textTransform: "uppercase"
-  }
 });
 
 interface IProps {
