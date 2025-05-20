@@ -24,7 +24,7 @@ const WelcomePage = () => {
             </Text>
           </View>
           <View style={styles.welcomeBtn}>
-            <View
+            {/* <View
               style={{
                 borderBottomWidth: 1,
                 borderBottomColor: "red",
@@ -43,7 +43,9 @@ const WelcomePage = () => {
               >
                 Đăng nhập với
               </Text>
-            </View>
+            </View> */}
+
+            
 
             <View>
               <View
@@ -98,16 +100,25 @@ const WelcomePage = () => {
                     paddingVertical: 10,
                     backgroundColor: "#2c2c2c",
                     borderWidth: 1,
-                    borderColor: "#ccc",
+                    borderColor: "#505050",
                     width: "82%"
                   }}
                   pressStyle={{ alignSelf: "stretch" }}
                 />
               </View>
             </View>
-            <View>
-              <Text style={{ textAlign: "center", color: "#ccc" }}>
-                Chưa có tài khoản? Đăng ký.
+            <View
+              style={{
+                flexDirection: "row",
+                gap: 10,
+                justifyContent: "center"
+              }}
+            >
+              <Text style={{ textAlign: "center", color: "white" }}>
+                Chưa có tài khoản?
+              </Text>
+              <Text style={{ textDecorationLine: "underline", color: "white" }}>
+                Đăng ký.
               </Text>
             </View>
           </View>
