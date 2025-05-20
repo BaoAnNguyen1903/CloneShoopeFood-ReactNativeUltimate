@@ -8,6 +8,10 @@ const styles = StyleSheet.create({
   inputGroup: {
     borderColor: "red",
     borderWidth: 5
+  },
+  text: {
+    fontSize: 20,
+    fontWeight: "600"
   }
 });
 
