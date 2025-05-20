@@ -7,7 +7,9 @@ const styles = StyleSheet.create({
   },
   inputGroup: {
     borderColor: "red",
-    borderWidth: 5
+    borderWidth: 5,
+    padding: 5,
+    gap: 10
   },
   text: {
     fontSize: 20,
@@ -26,8 +28,8 @@ const SignUpPage = () => {
         <Text>Đăng ký tài khoản</Text>
       </View>
       <View style={styles.inputGroup}>
-        <Text>Họ tên</Text>
-        <TextInput />
+        <Text style={styles.text}>Họ tên</Text>
+        <TextInput style={styles.input} />
       </View>
       <View>
         <Text>Email</Text>
