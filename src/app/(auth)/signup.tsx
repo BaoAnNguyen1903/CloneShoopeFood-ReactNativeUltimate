@@ -4,7 +4,7 @@ const SignUpPage = () => {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <View>
-
+        <Text>Đăng ký tài khoản</Text>
       </View>
     </View>
   );
