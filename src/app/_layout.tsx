@@ -9,6 +9,7 @@ const RootLayout = () => {
     // </View>
     <Stack>
       <Stack.Screen name="index" options={{ headerShown: false }} />
+      <Stack.Screen name="(auth)/signup" options={{ headerShown: false }} />
       <Stack.Screen
         name="product/index"
         options={{ headerTitle: "Sản phẩm" }}
