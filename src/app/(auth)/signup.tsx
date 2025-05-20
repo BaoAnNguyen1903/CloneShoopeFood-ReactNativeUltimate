@@ -3,7 +3,11 @@ import { StyleSheet, Text, TextInput, View } from "react-native";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 30
+    paddingTop: 50
+  },
+  inputGroup: {
+    borderColor: "red",
+    borderWidth: 5
   }
 });
 
@@ -13,7 +17,7 @@ const SignUpPage = () => {
       <View>
         <Text>Đăng ký tài khoản</Text>
       </View>
-      <View>
+      <View style={styles.inputGroup}>
         <Text>Họ tên</Text>
         <TextInput />
       </View>
