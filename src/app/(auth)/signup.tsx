@@ -6,8 +6,6 @@ const styles = StyleSheet.create({
     paddingTop: 50
   },
   inputGroup: {
-    borderColor: "red",
-    borderWidth: 5,
     padding: 5,
     gap: 10
   },
@@ -17,7 +15,10 @@ const styles = StyleSheet.create({
   },
   input: {
     borderColor: "green",
-    borderWidth: 1
+    borderWidth: 1,
+    paddingHorizontal: 7,
+    paddingVertical: 10,
+    borderRadius: 5
   }
 });
 
