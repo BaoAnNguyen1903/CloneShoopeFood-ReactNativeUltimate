@@ -32,7 +32,7 @@ interface IProps {
 
 const ShareInput = (props: IProps) => {
   const [isFocus, setIsFocus] = useState<boolean>(false);
-  const { title, keyboardType, secureTextEntry } = props;
+  const { title, keyboardType, secureTextEntry = false } = props;
   return (
     <View style={styles.inputGroup}>
       {title && <Text style={styles.text}>{title}</Text>}
