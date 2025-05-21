@@ -2,6 +2,7 @@ import ShareButton from "@/components/button/share.button";
 import SocialButton from "@/components/button/social.button";
 import ShareInput from "@/components/input/share.input";
 import { APP_COLOR } from "@/utils/constant";
+import axios from "axios";
 import { Link } from "expo-router";
 import { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
@@ -22,8 +23,11 @@ const SignUpPage = () => {
 
   const URL_BACKEND = process.env.EXPO_PUBLIC_API_URL;
   useEffect(() => {
-    
-  } )
+    const fetchAPI = async () => {
+      const res = await axios.get(URL_BACKEND!);
+    };
+    fetchAPI();
+  }, []); // [] để chạy duy nhất 1 lần
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
