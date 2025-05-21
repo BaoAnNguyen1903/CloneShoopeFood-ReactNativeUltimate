@@ -25,6 +25,7 @@ const SignUpPage = () => {
   useEffect(() => {
     const fetchAPI = async () => {
       try {
+        // const a = Platform.OS === "android" ? "10.0.2.2" : "localhost"
         const res = await axios.get(URL_BACKEND!);
         console.log(">>> check: ", res.data);
       } catch (error) {
