@@ -1,5 +1,4 @@
 export const APP_COLOR = {
   ORANGE: "#f4511e",
-  RED: "red",
-  BLUE: "lightblue"
+  GREY: "#d0d0d0"
 };

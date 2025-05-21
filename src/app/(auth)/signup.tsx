@@ -1,6 +1,9 @@
 import ShareButton from "@/components/button/share.button";
+import SocialButton from "@/components/button/social.button";
+import ShareInput from "@/components/input/share.input";
 import { APP_COLOR } from "@/utils/constant";
-import { StyleSheet, Text, TextInput, View } from "react-native";
+import { Link } from "expo-router";
+import { StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const styles = StyleSheet.create({
@@ -8,20 +11,6 @@ const styles = StyleSheet.create({
     flex: 1,
     marginHorizontal: 20,
     gap: 10
-  },
-  inputGroup: {
-    padding: 5,
-    gap: 10
-  },
-  text: {
-    fontSize: 18
-  },
-  input: {
-    borderColor: "#d0d0d0",
-    borderWidth: 1,
-    paddingHorizontal: 7,
-    paddingVertical: 10,
-    borderRadius: 5
   }
 });
 
@@ -30,20 +19,20 @@ const SignUpPage = () => {
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.container}>
         <View style={{ padding: 5 }}>
-          <Text>Đăng ký tài khoản</Text>
+          <Text
+            style={{
+              fontSize: 25,
+              fontWeight: 600,
+              marginVertical: 30
+            }}
+          >
+            Đăng ký tài khoản
+          </Text>
         </View>
-        <View style={styles.inputGroup}>
-          <Text style={styles.text}>Họ tên</Text>
-          <TextInput style={styles.input} />
-        </View>
-        <View style={styles.inputGroup}>
-          <Text style={styles.text}>Email</Text>
-          <TextInput keyboardType="email-address" style={styles.input} />
-        </View>
-        <View style={styles.inputGroup}>
-          <Text style={styles.text}>Password</Text>
-          <TextInput style={styles.input} />
-        </View>
+        <ShareInput title="Họ tên" />
+        <ShareInput title="Email" keyboardType="email-address" />
+        <ShareInput title="Password" />
+        <View style={{ marginVertical: 10 }}></View>
         <ShareButton
           title="ĐĂNG KÝ"
           onPress={() => alert("me")}
@@ -52,7 +41,7 @@ const SignUpPage = () => {
             justifyContent: "center",
             borderRadius: 30,
             marginHorizontal: 35,
-            paddingVertical: 15,
+            paddingVertical: 12,
             backgroundColor: APP_COLOR.ORANGE,
             borderWidth: 1,
             borderColor: "#505050",
@@ -60,6 +49,24 @@ const SignUpPage = () => {
           }}
           pressStyle={{ alignSelf: "stretch" }}
         />
+        <View
+          style={{
+            marginVertical: 15,
+            flexDirection: "row",
+            gap: 10,
+            justifyContent: "center"
+          }}
+        >
+          <Text style={{ textAlign: "center", color: "black" }}>
+            Đã có tài khoản
+          </Text>
+          <Link href={"/signup"}>
+            <Text style={{ textDecorationLine: "underline", color: "black" }}>
+              Đăng nhập.
+            </Text>
+          </Link>
+        </View>
+        <SocialButton />
       </View>
     </SafeAreaView>
   );
