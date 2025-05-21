@@ -36,13 +36,14 @@ const ShareInput = (props: IProps) => {
     <View style={styles.inputGroup}>
       {title && <Text style={styles.text}>{title}</Text>}
       <TextInput
-        onFocus={() => setIsFocus(true)}
-        onBlur={() => setIsFocus(false)}
         style={[
           styles.input,
           { borderColor: isFocus ? APP_COLOR.ORANGE : APP_COLOR.GREY }
         ]}
+        onFocus={() => setIsFocus(true)}
+        onBlur={() => setIsFocus(false)}
         keyboardType={keyboardType}
+        secureTextEntry
       />
     </View>
   );
