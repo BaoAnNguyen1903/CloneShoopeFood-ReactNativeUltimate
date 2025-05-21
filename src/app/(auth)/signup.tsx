@@ -4,7 +4,7 @@ import ShareInput from "@/components/input/share.input";
 import { APP_COLOR } from "@/utils/constant";
 import axios from "axios";
 import { Link } from "expo-router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -21,18 +21,16 @@ const SignUpPage = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  useEffect(() => {
-    const fetchAPI = async () => {
-      try {
-        // const a = Platform.OS === "android" ? "10.0.2.2" : "localhost"
-        const res = await axios.get(process.env.EXPO_PUBLIC_API_URL!);
-        console.log(">>> check: ", res.data);
-      } catch (error) {
-        console.log("err: ", error);
-      }
-    };
-    fetchAPI();
-  }, []); // [] để chạy duy nhất 1 lần
+  const handleSignUp = async () => {
+    const url = `${process.env.EXPO_PUBLIC_API_URL}/api/v1/auth/register`;
+    try {
+      // const a = Platform.OS === "android" ? "10.0.2.2" : "localhost"
+      const res = await axios.post(url, { email, password, name });
+      console.log(">>> check: ", res.data);
+    } catch (error) {
+      console.log("err: ", error);
+    }
+  };
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
