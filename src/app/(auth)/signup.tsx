@@ -24,7 +24,12 @@ const SignUpPage = () => {
   const URL_BACKEND = process.env.EXPO_PUBLIC_API_URL;
   useEffect(() => {
     const fetchAPI = async () => {
-      const res = await axios.get(URL_BACKEND!);
+      try {
+        const res = await axios.get(URL_BACKEND!);
+        console.log(">>> check: ", res.data);
+      } catch (error) {
+        console.log("err: ", error);
+      }
     };
     fetchAPI();
   }, []); // [] để chạy duy nhất 1 lần
