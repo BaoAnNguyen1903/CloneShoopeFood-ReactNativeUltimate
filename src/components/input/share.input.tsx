@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
 interface IProps {
   title?: string;
   keyboardType?: KeyboardTypeOptions;
+  secureTextEntry?: boolean;
 }
 
 const ShareInput = (props: IProps) => {
