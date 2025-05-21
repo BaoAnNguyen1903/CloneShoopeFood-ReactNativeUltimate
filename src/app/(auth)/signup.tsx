@@ -21,12 +21,11 @@ const SignUpPage = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  const URL_BACKEND = process.env.EXPO_PUBLIC_API_URL;
   useEffect(() => {
     const fetchAPI = async () => {
       try {
         // const a = Platform.OS === "android" ? "10.0.2.2" : "localhost"
-        const res = await axios.get(URL_BACKEND!);
+        const res = await axios.get(process.env.EXPO_PUBLIC_API_URL!);
         console.log(">>> check: ", res.data);
       } catch (error) {
         console.log("err: ", error);
