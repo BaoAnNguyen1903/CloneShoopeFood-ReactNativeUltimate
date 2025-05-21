@@ -3,7 +3,7 @@ import SocialButton from "@/components/button/social.button";
 import ShareInput from "@/components/input/share.input";
 import { APP_COLOR } from "@/utils/constant";
 import axios from "axios";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 import { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -26,6 +26,9 @@ const SignUpPage = () => {
     try {
       // const a = Platform.OS === "android" ? "10.0.2.2" : "localhost"
       const res = await axios.post(url, { email, password, name });
+      if (res.data) {
+        router.navigate("/(auth)/verify");
+      }
       console.log(">>> check: ", res.data);
     } catch (error) {
       console.log("err: ", error);
