@@ -23,12 +23,12 @@ const SignUpPage = () => {
 
   const handleSignUp = async () => {
     try {
-      // const a = Platform.OS === "android" ? "10.0.2.2" : "localhost"
       const res = await registerAPI(email, password, name);
       if (res.data) {
         router.navigate("/(auth)/verify");
+      } else {
+        alert(res.message)
       }
-      console.log(">>> check: ", res.data);
     } catch (error) {
       console.log("err: ", error);
     }
