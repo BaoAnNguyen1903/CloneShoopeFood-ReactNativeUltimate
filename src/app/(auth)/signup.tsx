@@ -1,8 +1,8 @@
 import ShareButton from "@/components/button/share.button";
 import SocialButton from "@/components/button/social.button";
 import ShareInput from "@/components/input/share.input";
+import { registerAPI } from "@/utils/api";
 import { APP_COLOR } from "@/utils/constant";
-import axios from "axios";
 import { Link, router } from "expo-router";
 import { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
@@ -22,10 +22,9 @@ const SignUpPage = () => {
   const [password, setPassword] = useState<string>("");
 
   const handleSignUp = async () => {
-    const url = `${process.env.EXPO_PUBLIC_API_URL}/api/v1/auth/register`;
     try {
       // const a = Platform.OS === "android" ? "10.0.2.2" : "localhost"
-      const res = await axios.post(url, { email, password, name });
+      const res = await registerAPI(email, password, name);
       if (res.data) {
         router.navigate("/(auth)/verify");
       }
@@ -63,7 +62,6 @@ const SignUpPage = () => {
           value={password}
           setValue={setPassword}
         />
-
         <View style={{ marginVertical: 10 }}></View>
 
         <ShareButton
@@ -91,7 +89,7 @@ const SignUpPage = () => {
           }}
         >
           <Text style={{ textAlign: "center", color: "black" }}>
-            Đã có tài khoản
+            Đã có tài khoản?
           </Text>
           <Link href={"/signup"}>
             <Text style={{ textDecorationLine: "underline", color: "black" }}>
