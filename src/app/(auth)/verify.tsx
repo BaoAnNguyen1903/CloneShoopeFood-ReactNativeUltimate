@@ -1,11 +1,20 @@
 import { APP_COLOR } from "@/utils/constant";
-import { Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import OTPTextView from "react-native-otp-textinput";
+
+const styles = StyleSheet.create({
+  container: {
+    
+  },
+  heading: {
+
+  }
+})
 
 const VerifyPage = () => {
   return (
-    <View>
-      <Text>VerifyPage page</Text>
+    <View style={styles.container}>
+      <Text style={styles.heading}>Xác thực tài khoản</Text>
       <OTPTextView
         inputCount={6}
         inputCellLength={1}
