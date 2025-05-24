@@ -27,7 +27,7 @@ const SignUpPage = () => {
       if (res.data) {
         router.navigate("/(auth)/verify");
       } else {
-        alert(res.message)
+        alert(res.message);
       }
     } catch (error) {
       console.log("err: ", error);
@@ -66,7 +66,7 @@ const SignUpPage = () => {
 
         <ShareButton
           title="ĐĂNG KÝ"
-          onPress={() => console.log(name, email, password)}
+          onPress={handleSignUp}
           textStyle={{ color: "#fff", paddingVertical: 5 }}
           btnStyle={{
             justifyContent: "center",
