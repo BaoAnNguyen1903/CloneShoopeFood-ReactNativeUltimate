@@ -23,6 +23,7 @@ const VerifyPage = () => {
       </Text>
       <View style={{ marginVertical: 20 }}>
         <OTPTextView
+          autoFocus
           inputCount={6}
           inputCellLength={1}
           tintColor={APP_COLOR.ORANGE}
