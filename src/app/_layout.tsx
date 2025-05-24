@@ -1,4 +1,5 @@
 import { Stack } from "expo-router";
+import { RootSiblingParent } from "react-native-root-siblings";
 
 const RootLayout = () => {
   return (
@@ -7,18 +8,20 @@ const RootLayout = () => {
     //   <Slot />
     //   <Text>Footer</Text>
     // </View>
-    <Stack>
-      <Stack.Screen name="index" options={{ headerShown: false }} />
-      <Stack.Screen name="(auth)/signup" options={{ headerShown: false }} />
-      <Stack.Screen
-        name="product/index"
-        options={{ headerTitle: "Sản phẩm" }}
-      />
-      <Stack.Screen
-        name="(auth)/login"
-        options={{ headerTitle: "Đăng nhập" }}
-      />
-    </Stack>
+    <RootSiblingParent>
+      <Stack>
+        <Stack.Screen name="index" options={{ headerShown: false }} />
+        <Stack.Screen name="(auth)/signup" options={{ headerShown: false }} />
+        <Stack.Screen
+          name="product/index"
+          options={{ headerTitle: "Sản phẩm" }}
+        />
+        <Stack.Screen
+          name="(auth)/login"
+          options={{ headerTitle: "Đăng nhập" }}
+        />
+      </Stack>
+    </RootSiblingParent>
   );
 };
 
