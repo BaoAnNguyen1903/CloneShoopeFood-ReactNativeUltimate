@@ -51,7 +51,7 @@ const LoginPage = () => {
       <View style={{ marginVertical: 10 }}></View>
 
       <ShareButton
-        title="ĐĂNG KÝ"
+        title="ĐĂNG NHẬP"
         onPress={handleSignUp}
         textStyle={{ color: "#fff", paddingVertical: 5 }}
         btnStyle={{
@@ -75,7 +75,7 @@ const LoginPage = () => {
         }}
       >
         <Text style={{ textAlign: "center", color: "black" }}>
-          Chưa có tài khoản
+          Chưa có tài khoản?
         </Text>
         <Link href={"/signup"}>
           <Text style={{ textDecorationLine: "underline", color: "black" }}>
