@@ -106,7 +106,7 @@ const SignUpPage = () => {
             </Text>
           </Link>
         </View>
-        <SocialButton />
+        <SocialButton title="Đăng ký với" />
       </View>
     </SafeAreaView>
   );

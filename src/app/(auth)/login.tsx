@@ -18,7 +18,7 @@ const LoginPage = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  const handleSignUp = () => {
+  const handleLogin = () => {
     alert("me");
   };
 
@@ -52,7 +52,7 @@ const LoginPage = () => {
 
       <ShareButton
         title="ĐĂNG NHẬP"
-        onPress={handleSignUp}
+        onPress={handleLogin}
         textStyle={{ color: "#fff", paddingVertical: 5 }}
         btnStyle={{
           justifyContent: "center",
@@ -83,7 +83,7 @@ const LoginPage = () => {
           </Text>
         </Link>
       </View>
-      <SocialButton />
+      <SocialButton title="Đăng nhập với" />
     </View>
   );
 };
