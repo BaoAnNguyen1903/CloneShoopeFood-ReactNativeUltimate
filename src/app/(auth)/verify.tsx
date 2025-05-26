@@ -23,7 +23,7 @@ const VerifyPage = () => {
   const [isSubmit, setIsSubmit] = useState<boolean>(false);
   const otpRef = useRef<OTPTextView>(null);
   const [code, setCode] = useState<string>("");
-  const { email } = useLocalSearchParams();
+  const { email, isLogin } = useLocalSearchParams();
 
   const verifyCode = async () => {
     setIsSubmit(true);
@@ -40,7 +40,10 @@ const VerifyPage = () => {
         backgroundColor: APP_COLOR.ORANGE,
         opacity: 1 // tham so cua thu vien. opacity là độ mờ của backgourd mặc định là 0.8
       });
-      router.replace("/(auth)/login"); // replace để không back lại được
+
+      if (isLogin) {
+        router.replace("/(tabs)");
+      } else router.replace("/(auth)/login"); // replace để không back lại được
     } else {
       Toast.show(Array.isArray(res.message) ? res.message[0] : res.message, {
         duration: Toast.durations.LONG,

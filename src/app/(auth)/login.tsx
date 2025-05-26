@@ -1,10 +1,12 @@
 import ShareButton from "@/components/button/share.button";
 import SocialButton from "@/components/button/social.button";
 import ShareInput from "@/components/input/share.input";
+import { loginAPI } from "@/utils/api";
 import { APP_COLOR } from "@/utils/constant";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 import { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
+import Toast from "react-native-root-toast";
 
 const styles = StyleSheet.create({
   container: {
@@ -18,8 +20,30 @@ const LoginPage = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  const handleLogin = () => {
-    console.log(email, password);
+  const handleLogin = async () => {
+    try {
+      const res = await loginAPI(email, password);
+      if (res.data) {
+        router.replace("/(tabs)");
+      } else {
+        const m = Array.isArray(res.message) ? res.message[0] : res.message;
+        Toast.show(m, {
+          duration: Toast.durations.LONG,
+          textColor: "white",
+          backgroundColor: APP_COLOR.ORANGE,
+          opacity: 1 // tham so cua thu vien. opacity là độ mờ của backgourd mặc định là 0.8
+        });
+
+        if (res.statusCode === 400) {
+          router.replace({
+            pathname: "/(auth)/verify",
+            params: { email: email, isLogin: 1 }
+          });
+        }
+      }
+    } catch (error) {
+      console.log(">>> check err: ", error);
+    }
   };
 
   return (
