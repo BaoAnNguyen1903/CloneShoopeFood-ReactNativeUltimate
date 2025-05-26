@@ -67,7 +67,6 @@ const VerifyPage = () => {
           <OTPTextView
             ref={otpRef}
             handleTextChange={setCode}
-            handleCellTextChange={hanldeCellTextChange}
             autoFocus
             inputCount={6}
             inputCellLength={1}
