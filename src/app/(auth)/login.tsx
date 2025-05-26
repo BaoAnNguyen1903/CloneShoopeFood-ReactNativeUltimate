@@ -19,7 +19,7 @@ const LoginPage = () => {
   const [password, setPassword] = useState<string>("");
 
   const handleLogin = () => {
-    console.log(email, password);
+    // console.log(email, password);
   };
 
   return (
