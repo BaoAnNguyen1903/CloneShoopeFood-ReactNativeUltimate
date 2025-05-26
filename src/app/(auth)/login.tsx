@@ -1,6 +1,27 @@
-import { Text, View } from "react-native";
+import ShareButton from "@/components/button/share.button";
+import SocialButton from "@/components/button/social.button";
+import ShareInput from "@/components/input/share.input";
+import { APP_COLOR } from "@/utils/constant";
+import { Link } from "expo-router";
+import { useState } from "react";
+import { StyleSheet, Text, View } from "react-native";
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginHorizontal: 20,
+    gap: 10
+  }
+});
 
 const LoginPage = () => {
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+
+  const handleSignUp = () => {
+    alert("me");
+  };
+
   return (
     <View style={styles.container}>
       <View style={{ padding: 5 }}>
@@ -11,11 +32,10 @@ const LoginPage = () => {
             marginVertical: 30
           }}
         >
-          Đăng ký tài khoản
+          Đăng nhập với
         </Text>
       </View>
 
-      <ShareInput title="Họ tên" value={name} setValue={setName} />
       <ShareInput
         title="Email"
         keyboardType="email-address"
@@ -55,11 +75,11 @@ const LoginPage = () => {
         }}
       >
         <Text style={{ textAlign: "center", color: "black" }}>
-          Đã có tài khoản?
+          Chưa có tài khoản
         </Text>
         <Link href={"/signup"}>
           <Text style={{ textDecorationLine: "underline", color: "black" }}>
-            Đăng nhập.
+            Đăng ký
           </Text>
         </Link>
       </View>
