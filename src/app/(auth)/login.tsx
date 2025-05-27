@@ -7,6 +7,7 @@ import {
   Button,
   SafeAreaView,
   StyleSheet,
+  Text,
   TextInput,
   View
 } from "react-native";
@@ -119,15 +120,25 @@ const LoginPage = () => {
         <SocialButton title="Đăng nhập với" />
       </View> */}
       <Formik
-        initialValues={{ email: "" }}
-        onSubmit={(values) => console.log(values)}
+        initialValues={{ email: "", password: "" }}
+        onSubmit={(values) => console.log("check values = ", values)}
       >
         {({ handleChange, handleBlur, handleSubmit, values }) => (
-          <View>
+          <View style={{ margin: 10 }}>
+            <Text>Email</Text>
             <TextInput
+              style={{ borderWidth: 1, borderColor: "#ccc" }}
               onChangeText={handleChange("email")}
               onBlur={handleBlur("email")}
               value={values.email}
+            />
+            <View style={{ marginVertical: 10 }}></View>
+            <Text>Password</Text>
+            <TextInput
+              style={{ borderWidth: 1, borderColor: "#ccc" }}
+              onChangeText={handleChange("password")}
+              onBlur={handleBlur("password")}
+              value={values.password}
             />
             <Button onPress={handleSubmit as any} title="Submit" />
           </View>
