@@ -1,5 +1,6 @@
 import { loginAPI } from "@/utils/api";
 import { APP_COLOR } from "@/utils/constant";
+import { LoginSchema } from "@/utils/validate.schema";
 import { router } from "expo-router";
 import { Formik } from "formik";
 import { useState } from "react";
@@ -120,6 +121,7 @@ const LoginPage = () => {
         <SocialButton title="Đăng nhập với" />
       </View> */}
       <Formik
+        validationSchema={LoginSchema}
         initialValues={{ email: "", password: "" }}
         onSubmit={(values) => console.log("check values = ", values)}
       >
