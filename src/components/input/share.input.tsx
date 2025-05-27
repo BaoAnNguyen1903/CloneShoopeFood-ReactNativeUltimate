@@ -65,8 +65,8 @@ const ShareInput = (props: IProps) => {
           ]}
           onFocus={() => setIsFocus(true)}
           onBlur={(e) => {
+            if (onBlur) onBlur(e); // con goi len cha nen ()
             setIsFocus(false);
-            onBlur(e); // con goi len cha nen ()
           }}
           keyboardType={keyboardType}
           secureTextEntry={secureTextEntry && !isShowPassword}
