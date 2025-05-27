@@ -38,6 +38,7 @@ interface IProps {
   setValue?: (v: any) => void;
   onChangeText?: any;
   onBlur?: any;
+  error?: any;
 }
 
 const ShareInput = (props: IProps) => {
@@ -50,7 +51,8 @@ const ShareInput = (props: IProps) => {
     value,
     setValue,
     onChangeText,
-    onBlur
+    onBlur,
+    error
   } = props;
   return (
     <View style={styles.inputGroup}>
@@ -62,15 +64,16 @@ const ShareInput = (props: IProps) => {
             { borderColor: isFocus ? APP_COLOR.ORANGE : APP_COLOR.GREY }
           ]}
           onFocus={() => setIsFocus(true)}
-          onBlur={() => {
+          onBlur={(e) => {
             setIsFocus(false);
-            onBlur(); // con goi len cha nen ()
+            onBlur(e); // con goi len cha nen ()
           }}
           keyboardType={keyboardType}
           secureTextEntry={secureTextEntry && !isShowPassword}
           value={value}
           onChangeText={onChangeText}
         />
+        {error && <Text style={{ color: "red", marginTop: 5 }}>{error}</Text>}
         {secureTextEntry && (
           <FontAwesome5
             style={styles.eye}

@@ -19,11 +19,11 @@ const styles = StyleSheet.create({
 });
 
 const LoginPage = () => {
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+  // const [email, setEmail] = useState<string>("");
+  // const [password, setPassword] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
 
-  const handleLogin = async () => {
+  const handleLogin = async (email: string, password: string) => {
     try {
       setLoading(true);
       const res = await loginAPI(email, password);
@@ -56,7 +56,7 @@ const LoginPage = () => {
       <Formik
         validationSchema={LoginSchema}
         initialValues={{ email: "", password: "" }}
-        onSubmit={(values) => console.log("check values = ", values)}
+        onSubmit={(values) => handleLogin(values.email, values.password)}
       >
         {({ handleChange, handleBlur, handleSubmit, values, errors }) => (
           // <View style={{ margin: 10 }}>
@@ -105,19 +105,25 @@ const LoginPage = () => {
               onChangeText={handleChange("email")}
               onBlur={handleBlur("email")}
               value={values.email}
+              error={errors.email}
             />
             <ShareInput
               title="Password"
               secureTextEntry={true}
-              value={password}
-              setValue={setPassword}
+              // value={password}
+              // setValue={setPassword}
+              onChangeText={handleChange("password")}
+              onBlur={handleBlur("password")}
+              value={values.password}
+              error={errors.password}
             />
             <View style={{ marginVertical: 10 }}></View>
 
             <ShareButton
               loading={loading}
               title="ĐĂNG NHẬP"
-              onPress={handleLogin}
+              // onPress={handleLogin}
+              onPress={handleSubmit as any}
               textStyle={{ color: "#fff", paddingVertical: 5 }}
               btnStyle={{
                 justifyContent: "center",
