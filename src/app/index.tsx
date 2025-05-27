@@ -105,7 +105,7 @@ const WelcomePage = () => {
               <Text style={{ textAlign: "center", color: "white" }}>
                 Chưa có tài khoản?
               </Text>
-              <Link href={"/signup"}>
+              <Link href={"/product"}>
                 <Text
                   style={{ textDecorationLine: "underline", color: "white" }}
                 >

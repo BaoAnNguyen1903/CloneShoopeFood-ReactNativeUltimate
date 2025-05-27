@@ -17,7 +17,7 @@ const RootLayout = () => {
           <Stack.Screen name="(auth)/verify" options={{ headerShown: false }} />
           <Stack.Screen
             name="product/index"
-            options={{ headerTitle: "Sản phẩm" }}
+            options={{ headerTitle: "Sản phẩm", headerShown: false }}
           />
           <Stack.Screen
             name="(auth)/login"
