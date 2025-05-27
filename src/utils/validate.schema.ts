@@ -7,5 +7,6 @@ export const LoginSchema = Yup.object().shape({
     .required("Password không được để trống"),
   email: Yup.string()
     .email("Định dạng email không hợp lệ")
-    .required("Email không được để trống")
+    .required("Email không được để trống"),
+  name: Yup.string().required("Họ tên không được để trống")
 });
