@@ -4,11 +4,11 @@ import ShareInput from "@/components/input/share.input";
 import { registerAPI } from "@/utils/api";
 import { APP_COLOR } from "@/utils/constant";
 import { Link, router } from "expo-router";
+import { Formik } from "formik";
 import { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Toast from "react-native-root-toast";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Formik } from "formik";
 
 const styles = StyleSheet.create({
   container: {
@@ -23,9 +23,13 @@ const SignUpPage = () => {
   // const [email, setEmail] = useState<string>("");
   // const [password, setPassword] = useState<string>("");
 
-  const handleSignUp = async () => {
+  const handleSignUp = async (
+    name: string,
+    email: string,
+    password: string
+  ) => {
     try {
-      const res = await registerAPI(email, password, name);
+      const res = await registerAPI(name, email, password);
       if (res.data) {
         router.replace({
           pathname: "/(auth)/verify",
@@ -49,7 +53,9 @@ const SignUpPage = () => {
       <Formik
         validationSchema={LoginSchema}
         initialValues={{ email: "", password: "" }}
-        onSubmit={(values) => handleSignUp(values.name, values.email, values.password)}
+        onSubmit={(values) =>
+          handleSignUp(values.name, values.email, values.password)
+        }
       >
         <View style={styles.container}>
           <View style={{ padding: 5 }}>
