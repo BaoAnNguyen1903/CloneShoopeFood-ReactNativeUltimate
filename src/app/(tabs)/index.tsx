@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { SafeAreaView, ScrollView, StyleSheet, View } from "react-native";
 
 const data = Array(10).fill(1);
 
@@ -25,17 +25,31 @@ const styles = StyleSheet.create({
     marginBottom: 6,
     width: "100%"
   },
-  list: {
-
-  }
+  list: {}
 });
 
 const HomeTab = () => {
-  
+  const MyComponent = () => {
+    return (
+      <View style={styles.topList}>
+        <ScrollView>
+
+        </ScrollView>
+      </View>
+    )
+  };
   return (
-    <View>
-      <Text>HomeTab page</Text>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <CustomFlatList
+        data={data}
+        style={styles.list}
+        renderItem={() => <View style={styles.item} />}
+        HeaderComponent={<View style={styles.header} />}
+        StickyElementComponent={<View style={styles.sticky} />}
+        // TopListElementComponent={<View style={styles.topList} />}
+        TopListElementComponent={<MyComponent />}
+      />
+    </SafeAreaView>
   );
 };
 
