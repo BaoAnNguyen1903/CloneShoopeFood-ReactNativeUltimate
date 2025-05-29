@@ -7,5 +7,3 @@ const HomeTab = () => {
     </View>
   );
 };
-
-export default HomeTab;
