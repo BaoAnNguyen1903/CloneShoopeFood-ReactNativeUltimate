@@ -98,7 +98,7 @@ const SignUpPage = () => {
 
             <ShareButton
               title="ĐĂNG KÝ"
-              onPress={handleSignUp}
+              onPress={handleSubmit}
               textStyle={{ color: "#fff", paddingVertical: 5 }}
               btnStyle={{
                 justifyContent: "center",
