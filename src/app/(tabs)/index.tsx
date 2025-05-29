@@ -3,7 +3,7 @@ import { Text, View } from "react-native";
 const HomeTab = () => {
   return (
     <View>
-      <Text>HomeTab page</Text>
+      <Text>HomeTab</Text>
     </View>
   );
 };
