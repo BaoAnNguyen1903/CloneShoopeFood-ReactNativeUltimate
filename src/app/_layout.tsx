@@ -16,13 +16,10 @@ const RootLayout = () => {
           <Stack.Screen name="(auth)/signup" options={{ headerShown: false }} />
           <Stack.Screen name="(auth)/verify" options={{ headerShown: false }} />
           <Stack.Screen
-            name="product/index"
-            options={{ headerTitle: "Sản phẩm", headerShown: false }}
-          />
-          <Stack.Screen
             name="(auth)/login"
             options={{ headerTitle: "Đăng nhập", headerShown: false }}
           />
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         </Stack>
       </SafeAreaView>
     </RootSiblingParent>
