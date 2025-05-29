@@ -62,14 +62,18 @@ const SignUpPage = () => {
         <ShareInput
           title="Email"
           keyboardType="email-address"
-          value={email}
-          setValue={setEmail}
+          onChangeText={handleChange("email")}
+          onBlur={handleBlur("email")}
+          value={values.email}
+          error={errors.email}
         />
         <ShareInput
           title="Password"
           secureTextEntry={true}
-          value={password}
-          setValue={setPassword}
+          onChangeText={handleChange("password")}
+          onBlur={handleBlur("password")}
+          value={values.password}
+          error={errors.password}
         />
         <View style={{ marginVertical: 10 }}></View>
 
