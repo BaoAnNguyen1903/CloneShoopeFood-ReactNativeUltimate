@@ -3,6 +3,7 @@ import SocialButton from "@/components/button/social.button";
 import ShareInput from "@/components/input/share.input";
 import { registerAPI } from "@/utils/api";
 import { APP_COLOR } from "@/utils/constant";
+import { LoginSchema } from "@/utils/validate.schema";
 import { Link, router } from "expo-router";
 import { Formik } from "formik";
 import { useState } from "react";
@@ -51,7 +52,7 @@ const SignUpPage = () => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <Formik
-        validationSchema={SignUpSchema}
+        validationSchema={LoginSchema}
         initialValues={{ name: "", email: "", password: "" }}
         onSubmit={(values) =>
           handleSignUp(values.name, values.email, values.password)
