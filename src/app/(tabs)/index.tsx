@@ -1,15 +1,9 @@
-import {
-  FlatList,
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View
-} from "react-native";
+import CustomFlatList from "@/components/CustomFlatList/CustomFlatList";
+import HeaderHome from "@/components/home/header.home";
+import SearchHome from "@/components/home/search.home";
+import { SafeAreaView, StyleSheet, View } from "react-native";
 
 const data = Array(10).fill(1);
-
-const data1 = Array(20).fill(1);
 
 const styles = StyleSheet.create({
   container: {
@@ -42,45 +36,18 @@ const styles = StyleSheet.create({
     height: 100,
     marginBottom: 6,
     width: "100%"
-  },
-  topList: {
-    borderColor: "orange",
-    borderWidth: 5,
-    height: 100,
-    marginBottom: 6,
-    width: "100%"
   }
 });
 
 const HomeTab = () => {
-  const MyComponent = () => {
-    return (
-      <View style={styles.topList}>
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          directionalLockEnabled={true}
-          alwaysBounceVertical={false}
-        >
-          <FlatList></FlatList>
-        </ScrollView>
-      </View>
-    );
-  };
   return (
     <SafeAreaView style={styles.container}>
       <CustomFlatList
         data={data}
         style={styles.list}
         renderItem={() => <View style={styles.item} />}
-        HeaderComponent={
-          <View style={styles.header}>
-            {" "}
-            <Text>Address</Text>
-          </View>
-        }
-        StickyElementComponent={<View style={styles.sticky} />}
-        // TopListElementComponent={<View style={styles.topList} />}
+        HeaderComponent={<HeaderHome />}
+        StickyElementComponent={<SearchHome />}
         TopListElementComponent={<MyComponent />}
       />
     </SafeAreaView>
