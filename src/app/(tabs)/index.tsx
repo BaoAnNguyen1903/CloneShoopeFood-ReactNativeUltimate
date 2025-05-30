@@ -1,7 +1,4 @@
 import CustomFlatList from "@/components/CustomFlatList/CustomFlatList";
-import HeaderHome from "@/components/home/header.home";
-import SearchHome from "@/components/home/search.home";
-import TopListHome from "@/components/home/top.list.home";
 import { SafeAreaView, StyleSheet, View } from "react-native";
 
 const data = Array(10).fill(1);
@@ -12,7 +9,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     overflow: "hidden",
-    padding: 15
+    padding: 8
   },
   header: {
     borderColor: "red",
@@ -38,6 +35,13 @@ const styles = StyleSheet.create({
     height: 100,
     marginBottom: 6,
     width: "100%"
+  },
+  topList: {
+    borderColor: "orange",
+    borderWidth: 5,
+    height: 100,
+    marginBottom: 6,
+    width: "100%"
   }
 });
 
@@ -48,9 +52,12 @@ const HomeTab = () => {
         data={data}
         style={styles.list}
         renderItem={() => <View style={styles.item} />}
-        HeaderComponent={<HeaderHome />}
-        StickyElementComponent={<SearchHome />}
-        TopListElementComponent={<TopListHome />}
+        // HeaderComponent={<HeaderHome />}
+        // StickyElementComponent={<SearchHome />}
+        // TopListElementComponent={<TopListHome />}
+        HeaderComponent={<View style={styles.header}></View>}
+        StickyElementComponent={<View style={styles.sticky}></View>}
+        TopListElementComponent={<View style={styles.topList}></View>}
       />
     </SafeAreaView>
   );

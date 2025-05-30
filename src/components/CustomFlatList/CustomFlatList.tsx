@@ -1,5 +1,6 @@
-import React, { JSX } from "react";
+import React from "react";
 import { Animated, FlatListProps, View } from "react-native";
+import { JSX } from "react/jsx-runtime";
 import { useCustomFlatListHook } from "./hook/useCustomFlatListHook";
 
 type CustomFlatListProps<T> = Omit<FlatListProps<T>, "ListHeaderComponent"> & {
