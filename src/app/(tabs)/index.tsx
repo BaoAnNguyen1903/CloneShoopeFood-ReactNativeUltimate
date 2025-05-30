@@ -56,7 +56,7 @@ const HomeTab = () => {
         // StickyElementComponent={<SearchHome />}
         // TopListElementComponent={<TopListHome />}
         HeaderComponent={<View style={styles.header}></View>}
-        StickyElementComponent={<View style={styles.sticky}></View>}
+        // StickyElementComponent={<View style={styles.sticky}></View>}
         TopListElementComponent={<View style={styles.topList}></View>}
       />
     </SafeAreaView>
