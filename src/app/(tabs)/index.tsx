@@ -36,13 +36,13 @@ const styles = StyleSheet.create({
     marginBottom: 6,
     width: "100%"
   },
-  topList: {
-    borderColor: "orange",
-    borderWidth: 5,
-    height: 100,
-    marginBottom: 6,
-    width: "100%"
-  }
+  // topList: {
+  //   borderColor: "orange",
+  //   borderWidth: 5,
+  //   height: 100,
+  //   marginBottom: 6,
+  //   width: "100%"
+  // }
 });
 
 const HomeTab = () => {
