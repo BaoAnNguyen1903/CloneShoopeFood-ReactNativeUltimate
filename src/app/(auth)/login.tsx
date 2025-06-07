@@ -122,7 +122,7 @@ const LoginPage = () => {
             <ShareButton
               loading={loading}
               title="ĐĂNG NHẬP"
-              // onPress={handleLogin}
+              // onPress={handleLogin as any}
               onPress={handleSubmit as any}
               textStyle={{ color: "#fff", paddingVertical: 5 }}
               btnStyle={{

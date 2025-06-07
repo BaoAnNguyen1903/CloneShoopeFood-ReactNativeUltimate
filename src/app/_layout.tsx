@@ -28,7 +28,7 @@ const RootLayout = () => {
               options={{ headerTitle: "Đăng nhập", headerShown: false }}
             />
             <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          </Stack>
+          </Stack>  
         </SafeAreaView>
       </RootSiblingParent>
     </GestureHandlerRootView>
