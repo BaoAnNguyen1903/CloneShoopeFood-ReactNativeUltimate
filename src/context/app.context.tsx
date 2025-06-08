@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 interface AppContextType {
   theme: string;
@@ -6,6 +6,15 @@ interface AppContextType {
 }
 
 const AppContext = createContext<AppContextType | null>(null);
+
+export const useCurrentTheme = () => {
+  const currentTheme = useContext(AppContext);
+
+  if (!currentTheme) {
+    throw new Error("useCurrentUser has to be used within <AppContext.Provider> ");
+  }
+  return currentTheme;
+};
 
 interface IProps {
   children: React.ReactNode;

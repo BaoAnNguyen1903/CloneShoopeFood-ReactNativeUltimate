@@ -3,6 +3,7 @@ import { Stack } from "expo-router";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { RootSiblingParent } from "react-native-root-siblings";
 import { SafeAreaView } from "react-native-safe-area-context";
+import AppProvider from "../context/app.context";
 
 const RootLayout = () => {
   const navTheme = {
@@ -20,27 +21,29 @@ const RootLayout = () => {
     // </View>
     <GestureHandlerRootView>
       <RootSiblingParent>
-        <SafeAreaView style={{ flex: 1 }}>
-          <ThemeProvider value={navTheme}>
-            {/* lam background trong suot */}
-            <Stack>
-              <Stack.Screen name="index" options={{ headerShown: false }} />
-              <Stack.Screen
-                name="(auth)/signup"
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen
-                name="(auth)/verify"
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen
-                name="(auth)/login"
-                options={{ headerTitle: "Đăng nhập", headerShown: false }}
-              />
-              <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-            </Stack>
-          </ThemeProvider>
-        </SafeAreaView>
+        <AppProvider>
+          <SafeAreaView style={{ flex: 1 }}>
+            <ThemeProvider value={navTheme}>
+              {/* lam background trong suot */}
+              <Stack>
+                <Stack.Screen name="index" options={{ headerShown: false }} />
+                <Stack.Screen
+                  name="(auth)/signup"
+                  options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                  name="(auth)/verify"
+                  options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                  name="(auth)/login"
+                  options={{ headerTitle: "Đăng nhập", headerShown: false }}
+                />
+                <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+              </Stack>
+            </ThemeProvider>
+          </SafeAreaView>
+        </AppProvider>
       </RootSiblingParent>
     </GestureHandlerRootView>
   );
