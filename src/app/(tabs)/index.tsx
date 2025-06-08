@@ -1,10 +1,9 @@
 import CustomFlatList from "@/components/CustomFlatList/CustomFlatList";
+import CollectionHome from "@/components/home/collection.home";
 import HeaderHome from "@/components/home/header.home";
 import SearchHome from "@/components/home/search.home";
 import TopListHome from "@/components/home/top.list.home";
-import { SafeAreaView, StyleSheet, View } from "react-native";
-
-const data = Array(10).fill(1);
+import { SafeAreaView, StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   container: {
@@ -48,13 +47,19 @@ const styles = StyleSheet.create({
   }
 });
 
+const data = [
+  { key: 1, name: "asasba" },
+  { key: 2, name: "asasba" },
+  { key: 3, name: "asasba" }
+];
+
 const HomeTab = () => {
   return (
     <SafeAreaView style={styles.container}>
       <CustomFlatList
         data={data}
         style={styles.list}
-        renderItem={() => <View style={styles.item} />}
+        renderItem={({ item }) => <CollectionHome name={item.name} />}
         HeaderComponent={<HeaderHome />}
         StickyElementComponent={<SearchHome />}
         TopListElementComponent={<TopListHome />}
