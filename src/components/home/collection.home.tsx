@@ -1,10 +1,12 @@
 import { getTopRestaurant } from "@/utils/api";
 import { APP_COLOR } from "@/utils/constant";
+import { router } from "expo-router";
 import { useEffect, useState } from "react";
 import {
   FlatList,
   Image,
   Platform,
+  Pressable,
   StyleSheet,
   Text,
   View
@@ -86,24 +88,33 @@ const CollectionHome = (props: IProps) => {
           showsVerticalScrollIndicator={false}
           renderItem={({ item }) => {
             return (
-              <View>
-                <Image
-                  source={{ uri: `${baseImage}/${item.image}` }}
-                  style={{ height: 130, width: 130 }}
-                />
-                <View style={{ padding: 5 }}>
-                  <Text
-                    numberOfLines={1}
-                    ellipsizeMode="tail"
-                    style={{ fontWeight: "600", maxWidth: 130 }}
-                  >
-                    {item.name}
-                  </Text>
-                  <View style={styles.sale}>
-                    <Text style={{ color: APP_COLOR.ORANGE }}>Flash Sale</Text>
+              // vì View không có sự kiện onPress nên dùng Pressable
+              <Pressable
+                // style để khít với view
+                style={{ alignSelf: "flex-start" }}
+                onPress={() => router.navigate("/product")}
+              >
+                <View style={{ backgroundColor: "#efefef" }}>
+                  <Image
+                    source={{ uri: `${baseImage}/${item.image}` }}
+                    style={{ height: 130, width: 130 }}
+                  />
+                  <View style={{ padding: 5 }}>
+                    <Text
+                      numberOfLines={1}
+                      ellipsizeMode="tail"
+                      style={{ fontWeight: "600", maxWidth: 130 }}
+                    >
+                      {item.name}
+                    </Text>
+                    <View style={styles.sale}>
+                      <Text style={{ color: APP_COLOR.ORANGE }}>
+                        Flash Sale
+                      </Text>
+                    </View>
                   </View>
                 </View>
-              </View>
+              </Pressable>
             );
           }}
         />

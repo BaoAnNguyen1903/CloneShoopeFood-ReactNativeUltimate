@@ -43,6 +43,10 @@ const RootLayout = () => {
                 options={{ headerShown: false }}
               />
               <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+              <Stack.Screen
+                name="product/index"
+                options={{ headerShown: false }}
+              />
             </Stack>
           </ThemeProvider>
           {/* </SafeAreaView> */}
