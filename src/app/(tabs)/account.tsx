@@ -1,11 +1,11 @@
-import { useCurrentTheme } from "@/context/app.context";
+import { useCurrentApp } from "@/context/app.context";
 import { Text, View } from "react-native";
 
 const AccountTab = () => {
-  const { theme } = useCurrentTheme();
+  const { theme, appState } = useCurrentApp();
   return (
     <View>
-      <Text>AccountTab page, theme = {theme}</Text>
+      <Text>AccountTab page, appState = {JSON.stringify(appState)}</Text>
     </View>
   );
 };

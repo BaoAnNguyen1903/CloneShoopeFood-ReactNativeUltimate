@@ -1,6 +1,7 @@
 import ShareButton from "@/components/button/share.button";
 import SocialButton from "@/components/button/social.button";
 import ShareInput from "@/components/input/share.input";
+import { useCurrentApp } from "@/context/app.context";
 import { loginAPI } from "@/utils/api";
 import { APP_COLOR } from "@/utils/constant";
 import { LoginSchema } from "@/utils/validate.schema";
@@ -22,6 +23,7 @@ const LoginPage = () => {
   // const [email, setEmail] = useState<string>("");
   // const [password, setPassword] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
+  const { setAppState } = useCurrentApp();
 
   const handleLogin = async (email: string, password: string) => {
     try {
@@ -29,6 +31,7 @@ const LoginPage = () => {
       const res = await loginAPI(email, password);
       setLoading(false);
       if (res.data) {
+        setAppState(res.data);
         router.replace("/(tabs)");
       } else {
         const m = Array.isArray(res.message) ? res.message[0] : res.message;
