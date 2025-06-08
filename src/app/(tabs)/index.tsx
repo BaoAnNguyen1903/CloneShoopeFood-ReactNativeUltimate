@@ -48,9 +48,9 @@ const styles = StyleSheet.create({
 });
 
 const data = [
-  { key: 1, name: "asasba" },
-  { key: 2, name: "asasba" },
-  { key: 3, name: "asasba" }
+  { key: 1, name: "asasba", desciption: "" },
+  { key: 2, name: "asasba", desciption: "" },
+  { key: 3, name: "asasba", desciption: "" }
 ];
 
 const HomeTab = () => {
@@ -59,7 +59,9 @@ const HomeTab = () => {
       <CustomFlatList
         data={data}
         style={styles.list}
-        renderItem={({ item }) => <CollectionHome name={item.name} />}
+        renderItem={({ item }) => (
+          <CollectionHome name={item.name} desciption={item.desciption} />
+        )}
         HeaderComponent={<HeaderHome />}
         StickyElementComponent={<SearchHome />}
         TopListElementComponent={<TopListHome />}
