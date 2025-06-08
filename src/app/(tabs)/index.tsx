@@ -48,9 +48,9 @@ const styles = StyleSheet.create({
 });
 
 const data = [
-  { key: 1, name: "asasba", desciption: "" },
-  { key: 2, name: "asasba", desciption: "" },
-  { key: 3, name: "asasba", desciption: "" }
+  { key: 1, name: "asasba", desciption: "", refAPI: "1" },
+  { key: 2, name: "asasba", desciption: "", refAPI: "2" },
+  { key: 3, name: "asasba", desciption: "", refAPI: "3" }
 ];
 
 const HomeTab = () => {
@@ -60,7 +60,11 @@ const HomeTab = () => {
         data={data}
         style={styles.list}
         renderItem={({ item }) => (
-          <CollectionHome name={item.name} desciption={item.desciption} />
+          <CollectionHome
+            name={item.name}
+            desciption={item.desciption}
+            refAPI={item.refAPI}
+          />
         )}
         HeaderComponent={<HeaderHome />}
         StickyElementComponent={<SearchHome />}

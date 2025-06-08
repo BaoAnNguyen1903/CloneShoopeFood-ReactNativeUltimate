@@ -1,9 +1,19 @@
+import { getTopRestaurant } from "@/utils/api";
 import { APP_COLOR } from "@/utils/constant";
-import { FlatList, Image, StyleSheet, Text, View } from "react-native";
+import { useEffect, useState } from "react";
+import {
+  FlatList,
+  Image,
+  Platform,
+  StyleSheet,
+  Text,
+  View
+} from "react-native";
 
 interface IProps {
   name: string;
   desciption: string;
+  refAPI: string;
 }
 
 const styles = StyleSheet.create({
@@ -21,7 +31,7 @@ const styles = StyleSheet.create({
 });
 
 const CollectionHome = (props: IProps) => {
-  const { name, desciption } = props;
+  const { name, desciption, refAPI } = props;
   const data = [
     { key: 1, image: "", name: "cua hang 1" },
     { key: 2, image: "", name: "cua hang 2" },
@@ -29,6 +39,28 @@ const CollectionHome = (props: IProps) => {
     { key: 4, image: "", name: "cua hang 4" },
     { key: 5, image: "", name: "cua hang 5" }
   ];
+
+  const [restaurants, setRestaurants] = useState<ITopRestaurant[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await getTopRestaurant(refAPI);
+      if (res.data) {
+        //success
+        setRestaurants(res.data);
+      } else {
+        //err
+      }
+    };
+    fetchData();
+  }, [refAPI]); // nếu refAPI thay đổi thì await getTopRestaurant(refAPI); sẽ thay đổi
+
+  const backend =
+    Platform.OS === "android"
+      ? process.env.EXPO_PUBLIC_ANDROID_API_URL
+      : process.env.EXPO_PUBLIC_IOS_API_URL;
+
+  const baseImage = `${backend}/images/restaurant`;
   return (
     <>
       <View style={{ height: 10, backgroundColor: "#e9e9e9" }}></View>
@@ -47,7 +79,7 @@ const CollectionHome = (props: IProps) => {
         </View>
 
         <FlatList
-          data={data}
+          data={restaurants}
           horizontal
           contentContainerStyle={{ gap: 5 }}
           showsHorizontalScrollIndicator={false}
@@ -56,11 +88,17 @@ const CollectionHome = (props: IProps) => {
             return (
               <View>
                 <Image
-                  source={require("src/assets/images/react-logo.png")}
+                  source={{ uri: `${baseImage}/${item.image}` }}
                   style={{ height: 130, width: 130 }}
                 />
                 <View style={{ padding: 5 }}>
-                  <Text style={{ fontWeight: "600" }}>{item.name}</Text>
+                  <Text
+                    numberOfLines={1}
+                    ellipsizeMode="tail"
+                    style={{ fontWeight: "600", maxWidth: 130 }}
+                  >
+                    {item.name}
+                  </Text>
                   <View style={styles.sale}>
                     <Text style={{ color: APP_COLOR.ORANGE }}>Flash Sale</Text>
                   </View>
