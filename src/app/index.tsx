@@ -2,28 +2,45 @@ import { useCurrentApp } from "@/context/app.context";
 import { getAccountAPI } from "@/utils/api";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { router } from "expo-router";
+import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { APP_COLOR } from "../utils/constant";
+import { Text, View } from "react-native";
 
-const WelcomePage = () => {
+SplashScreen.preventAutoHideAsync();
+
+const RootPage = () => {
   const { setAppState } = useCurrentApp();
 
   useEffect(() => {
-    const fetchAccount = async () => {
-      const res = await getAccountAPI();
-      if (res.data) {
-        //success
-        setAppState({
-          user: res.data.user,
-          access_token: await AsyncStorage.getItem("access_token")
-        });
-        router.replace("/(tabs)");
-      } else {
-        //err
-      }
-    };
+    const fetchAccount = async () => {};
     fetchAccount();
+  }, []);
+
+  // lên trang tài liệu SplashScreen lấy về rr sửa
+  useEffect(() => {
+    async function prepare() {
+      try {
+        // Pre-load fonts, make any API calls you need to do here
+        const res = await getAccountAPI();
+        if (res.data) {
+          //success
+          setAppState({
+            user: res.data.user,
+            access_token: await AsyncStorage.getItem("access_token")
+          });
+          router.replace("/(tabs)");
+        } else {
+          //err
+          router.replace("/(auth)/welcome");
+        }
+      } catch (e) {
+        console.warn(e);
+      } finally {
+        await SplashScreen.hideAsync(); // dùng bản cũ nên code khác so với bản mới ở tài liệu thư viện
+      }
+    }
+
+    prepare();
   }, []);
 
   // if (true) {
@@ -41,33 +58,4 @@ const WelcomePage = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingHorizontal: 10
-  },
-  welcomeText: {
-    flex: 0.6,
-    alignItems: "flex-start",
-    justifyContent: "center",
-    paddingLeft: 20
-  },
-  welcomeBtn: {
-    flex: 0.4,
-    gap: 30
-  },
-  heading: {
-    fontSize: 40,
-    fontWeight: "600"
-  },
-  body: {
-    fontSize: 30,
-    color: APP_COLOR.ORANGE,
-    marginVertical: 10
-  },
-  footer: {
-    color: "white"
-  }
-});
-
-export default WelcomePage;
+export default RootPage;

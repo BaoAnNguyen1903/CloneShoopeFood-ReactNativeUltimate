@@ -39,6 +39,10 @@ const RootLayout = () => {
                   name="(auth)/login"
                   options={{ headerTitle: "Đăng nhập", headerShown: false }}
                 />
+                <Stack.Screen
+                  name="(auth)/welcome"
+                  options={{ headerShown: false }}
+                />
                 <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
               </Stack>
             </ThemeProvider>
