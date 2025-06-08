@@ -1,13 +1,35 @@
 import TextBetweenLine from "@/components/button/text.between.line";
+import { useCurrentApp } from "@/context/app.context";
+import { getAccountAPI } from "@/utils/api";
 import { FontAwesome5 } from "@expo/vector-icons";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { LinearGradient } from "expo-linear-gradient";
 import { Link, router } from "expo-router";
+import { useEffect } from "react";
 import { ImageBackground, StyleSheet, Text, View } from "react-native";
 import ShareButton from "../components/button/share.button";
-
 import { APP_COLOR } from "../utils/constant";
 
 const WelcomePage = () => {
+  const { setAppState } = useCurrentApp();
+
+  useEffect(() => {
+    const fetchAccount = async () => {
+      const res = await getAccountAPI();
+      if (res.data) {
+        //success
+        setAppState({
+          user: res.data.user,
+          access_token: await AsyncStorage.getItem("access_token")
+        });
+        router.replace("/(tabs)");
+      } else {
+        //err
+      }
+    };
+    fetchAccount();
+  }, []);
+
   // if (true) {
   //   return(
   //   <Redirect href={"/(auth)/signup"} />
