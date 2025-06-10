@@ -68,7 +68,7 @@ const VerifyPage = () => {
       duration: Toast.durations.LONG,
       textColor: "white",
       backgroundColor: APP_COLOR.ORANGE,
-      opacity: 1 // tham so cua thu vien. opacity là độ mờ của backgourd mặc định là 0.8
+      opacity: 1
     });
   };
 
